@@ -1,6 +1,7 @@
 /**================================================================================================
  * *                                           INFO
  *  Autore: Francesco Pio Nocerino
+ *  @email: nocerpio9@gmail.com
  *  File:   codiceFiscale.cpp
  *  Versine: 1.3
  *  Descrizione:
