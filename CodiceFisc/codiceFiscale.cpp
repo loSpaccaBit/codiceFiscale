@@ -1,7 +1,7 @@
 /**================================================================================================
  * *                                           INFO
  *  Autore: Francesco Pio Nocerino
- *  @site:  https://github.com/KekkoDev/codiceFiscale.wiki.git
+ *  @site:  https://github.com/KekkoDev/codiceFiscale/wiki
  *  @email: nocerpio9@gmail.com
  *  File:   codiceFiscale.cpp
  *  Versine: 1.3
@@ -42,6 +42,7 @@
 #include <ctime>
 #include <unistd.h>
 using namespace std;
+
 /*================================ LISTA ERRORI ==============================*/
 /**
  * ERROR 001 -> STRINGA VUOTA
@@ -106,13 +107,14 @@ string color(string word, string back, float num);
 #endif
 void card(string codice, string nome, string cognome, string lugoNascita, string dataNascita, char sesso); //* Grafica x stampa finale
 void banner();                                                                                             //* Banner intestazione nome programma
-void loading();
+void loading();                                                                                            //* Schermata di caricamento
 
 /*================================ FINE PROTOTIPI ==============================*/
 
 int main()
 {
-#ifdef _WIN32
+
+#ifdef _WIN32 // Ridimensionamento console
     size_shell(800, 600);
 #elif __APPLE__
     size_shell_MacOS("107", "28");
@@ -137,8 +139,8 @@ int main()
     //* Sesso
     cout << "Inserisci Sesso > ";
     cin >> sesso;
-    upper_Char(sesso);
     cntrl_sesso(sesso);
+    upper_Char(sesso);
     cout << "----------------------------------\n";
 
     //* Data di Nascita
@@ -157,7 +159,7 @@ int main()
     estr_data(dataNascita, sesso, giorno, anno);
 
     string codice_calcolato;
-
+    // Calcolo de codice
     codice_calcolato = estr_cognome(cognome) + estr_nome(nome) + anno + lettera_mese(dataNascita) + giorno + codiceComune("./src/DB_comuni_IT.txt", luogoNascita);
     codice_calcolato += carattere_cntrl(codice_calcolato);
 
@@ -178,6 +180,7 @@ void dati(string &dato, string out)
      *@param &dato, out string
      *@return void
      *------------------------------------------------------------------------**/
+
     cout << out;
     fflush(stdin);
     getline(cin, dato);
@@ -1185,3 +1188,5 @@ void loading()
     slp(time2);
     cl();
 }
+
+/*=========================================== FINE PROGRAMMA ===========================================*/
