@@ -1160,7 +1160,7 @@ void banner()
     cout << "  \\____\\___/ \\__,_|_|\\___\\___|_|   |_|___/\\___\\__,_|_|\\___| \n";
     set_console_color(14);
     cout << endl;
-    cout << "\t\t\tBy: Francesco Pio Nocerino\n";
+    cout << "\t\t\tBy: Francesco Pio Nocerino\n\n";
     set_console_color(7);
 
 #elif defined __APPLE__ //*MacOs code
