@@ -998,6 +998,8 @@ void card(string codice, string codice2, string cognome, string nome, string ses
     cout << "| \n";
     cout << ".                                                                    .\n";
     cout << " =====================================================================\n";
+    cout<<"Premere un tasto per terminare...\n";
+    cin.get();
 #elif defined __APPLE__ // MacOs code
 
     cout << color(RED, BOLD, "NB: E' POSSIBBILE CHE DUE PERSONE ABBIANO LO STESSO CODICE FISCALE IN QUESTO CASO L'AGENZIA DELLE ENTRATE PROVVEDE A SOSTITUIRE ALCUNI CARATTERI\n");
