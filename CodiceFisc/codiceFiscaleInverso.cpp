@@ -960,7 +960,7 @@ void card(string codice, string codice2, string cognome, string nome, string ses
     cout << "==== \\____\\___/ \\__,_|_|\\___\\___| |_|   |_|___/\\___\\__,_|_|\\___| ====\n ";
     cout << " ==================================================================== \n";
     cout << "|                                                                    |\n";
-    cntrl_giornoNascita(giornoNascita, dataNascita, meseNascita, annoNascia, sesso);
+    cntrl_giornoNascita(giornoNascita, dataNascita, meseNascita, annoNascita, sesso);
     if (trv)
     {
         set_console_color(12);
