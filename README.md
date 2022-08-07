@@ -39,13 +39,13 @@ Caso codice di controllo errato!!
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
-Caso di data di nascita femminile errata
+Caso di data di nascita errata
 
 
 ![Schermata 2022-08-07 alle 18 56 57](https://user-images.githubusercontent.com/91205851/183306990-902048bf-aa8e-446f-9d6c-b07529174e26.png)
 
 
-Nell esempio precedente in foto viene inserito un codice fiscale femminile con data di nascita errata (73 = 33).
+Nell esempio precedente in foto viene inserito un codice  con data di nascita errata.
 
 
 ![Schermata 2022-08-07 alle 20 57 14](https://user-images.githubusercontent.com/91205851/183307028-9ccf18c6-5215-4f63-8cfd-c8c59b4c8f17.png)
