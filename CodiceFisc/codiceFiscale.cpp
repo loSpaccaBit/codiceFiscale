@@ -213,6 +213,7 @@ void slp(int d)
      *@param d int  
      *@return void
      *------------------------**/
+
 #ifdef _WIN32
     Sleep(d);
 #elif defined __APPLE__
@@ -228,6 +229,7 @@ void upper(string &str)
      *@param &str string
      *@return void
      *------------------------**/
+
     int tot, j = 0;
     for (int i = 0; i < str.size(); i++, j++)
     {
@@ -247,6 +249,7 @@ void upper_Char(char &c)
      *@param void
      *@return void
      *------------------------**/
+
     if (c >= 65 && c <= 90)
         c = c;
     else
@@ -261,6 +264,7 @@ string codiceComune(string nome_file, string &key)
      *@param nome_file, &key string
      *@return string
      *------------------------------------------------------------------------**/
+
     vector<string> record;
     ifstream file;
     file.open(nome_file);
@@ -292,6 +296,7 @@ char lettera_mese(string data)
      *@param data string
      *@return char
      *---------------------------------------------**/
+
     string mesi = "ABCDEHLMPRST", m;
     m += data.substr(3, 2);
     int ms = stoi(m);
@@ -307,6 +312,7 @@ char carattere_cntrl(string codice)
      *@param codice string  
      *@return char
      *---------------------------------------------**/
+
     int tot = 0, r;
     char l;
 
@@ -415,6 +421,7 @@ int carattere_pari(char t)
      *@param t char  
      *@return int
      *---------------------------------------------**/
+
     int conta = 0;
     switch (t)
     {
@@ -664,6 +671,7 @@ void cntrl_dati(string &input, string out)
      *@param &input, out string    
      *@return void
      *========================================================================**/
+
     bool trv;
     do
     {
@@ -695,6 +703,7 @@ void cntrl_sesso(char &sesso)
      *@param &sesso char
      *@return void
      *------------------------**/
+
     bool t = false;
     do
     {
@@ -942,6 +951,7 @@ void cl()
      *@return void
      *? Pulisce la console x tutti i SO
      *------------------------**/
+
 #ifdef _WIN32
     system("cls");
 #elif defined(__APPLE__)
@@ -996,6 +1006,7 @@ void size_shell(int h, int w) //! Ridimensiona shell data altezza e larghezza
     *@param cl int
     *@return void
     *------------------------**/
+
     HWND console = GetConsoleWindow();
     RECT ConsoleRect;
     GetWindowRect(console, &ConsoleRect);
@@ -1013,6 +1024,7 @@ void size_shell_MacOS(string h, string w) //! Ridimensiona shell data altezza e 
     *@param h e w string
     *@return void
     *------------------------**/
+
     cout.flush();
     cout << "\e[8;" + w + ";" + h + "t";
 }
@@ -1135,6 +1147,7 @@ void banner()
      *@param void
      *@return void
      *------------------------------------------------------------------------**/
+
 #ifdef _WIN32 //*Windows code
     set_console_color(10);
     cout << "   ____          _ _          _____ _               _\n";
@@ -1147,7 +1160,7 @@ void banner()
     set_console_color(14);
     cout << endl;
     cout << "\t\t\tBy: Francesco Pio Nocerino\n";
-    set_conosle_color(7);
+    set_console_color(7);
 
 #elif defined __APPLE__ //*MacOs code
     cout << color(GREEN, "", "  ____          _ _          _____ _               _\n");
@@ -1168,8 +1181,8 @@ void loading()
      *@param void  
      *@return void
      *---------------------------------------------**/
-    cl();
 
+    cl();
     const int time = 4, time1 = 1, time2 = 2;
     int conta = 1;
 
