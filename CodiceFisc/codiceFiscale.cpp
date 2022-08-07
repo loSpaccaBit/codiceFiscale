@@ -46,11 +46,14 @@
 #include <ctime>
 using namespace std;
 
+#define NCHAR_MIN 3
+
 /*================================ LISTA ERRORI ==============================*/
 /**
  * ERROR 001 -> STRINGA VUOTA
  * ERROR 002 -> SESSO NON VALIDO
  * ERROR 003 -> DATA DI NASCITA NON VALIDA
+ * ERROR 004 -> LUNGHEZZA MINIMA NON VALIDA
  * CODICE COMUNE NON TROVATO -> MacOS -> segmentation fault error compiler
  */
 
@@ -72,7 +75,8 @@ int carattere_dispari(char t);
 
 /*================== CONTROLLI INPUT =================*/
 
-void cntrl_dati(string &input, string out);  //Controlo inserimento stringa
+void cntrl_dati(string &input, string out); //Controlo inserimento stringa
+void cntrl_nCaratteri(int nMax, string &input, string out);
 void cntrl_sesso(char &sesso);               // Controllo inserimento sesso
 void cntrl_dataNascita(string &dataNascita); // Controllo inserimento data di nascita
 
@@ -130,12 +134,14 @@ int main()
     //* Cognome
     dati(cognome, "Inserisci Cognome > ");
     cntrl_dati(cognome, "Inserisci Cognome > ");
+    cntrl_nCaratteri(NCHAR_MIN, cognome, "Inserisci Cognome > ");
     upper(cognome);
     cout << "----------------------------------\n";
 
     //* Nome
     dati(nome, "Inserisci Nome > ");
     cntrl_dati(nome, "Inserisci Nome > ");
+    cntrl_nCaratteri(NCHAR_MIN, nome, "Inserisci Nome > ");
     upper(nome);
     cout << "----------------------------------\n";
 
@@ -156,6 +162,7 @@ int main()
     //* Luogo Nascita
     dati(luogoNascita, "Inserisci Luogo di Nascita > ");
     cntrl_dati(luogoNascita, "Inserisci Luogo di Nascita > ");
+    cntrl_nCaratteri(NCHAR_MIN, luogoNascita, "Inserisci Luogo Nascita > ");
     upper(luogoNascita);
     cout << "----------------------------------\n";
 
@@ -696,6 +703,33 @@ void cntrl_dati(string &input, string out)
         else
             trv = false;
     } while (trv);
+}
+
+void cntrl_nCaratteri(int nMax, string &input, string out)
+{
+    int lunghezza = input.size();
+    while (lunghezza < nMax)
+    {
+#ifdef _WIN32
+        set_console_color(12);
+        cout << bold_on << "[ERROR 004] Il valore inserito non e' valido inserire alemo " << bold_off;
+        set_console_color(10);
+        cout << bold_on << nMax << bold_off;
+        set_console_color(12);
+        cout << bold_on << " caratteri!!\n"
+             << bold_off;
+        set_console_color(7);
+#elif defined __APPLE__
+        cout << color(RED, BOLD, "[ERROR 004] Il valore inserito non e' valido inserire alemo ")
+             << color(GREEN, BOLD, nMax)
+             << color(RED, BOLD, " caratteri!!\n");
+#endif
+        cout << out;
+        fflush(stdin);
+        getline(cin, input);
+        cntrl_dati(input, out);
+        lunghezza = input.size();
+    }
 }
 
 void cntrl_sesso(char &sesso)
