@@ -35,16 +35,19 @@ Estrazione Dati
 
 Caso codice di controllo errato!!
 
-[Schermata 2022-08-07 alle 18 54 38](https://user-images.githubusercontent.com/91205851/183302448-28d78688-6b26-40b4-84da-944c0b9f1986.png)
+![Schermata 2022-08-07 alle 18 54 38](https://user-images.githubusercontent.com/91205851/183306881-02bcbd7a-b1cc-4db1-97a7-ca2d9c3d6f64.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 Caso di data di nascita femminile errata
 
-![Schermata 2022-08-07 alle 18 55 31](https://user-images.githubusercontent.com/91205851/183302537-1d633718-dcbf-477e-8d50-b18783b607a4.png)
 
-Nell esempio in foto viene inserito il codice un codice fiscale femminile 
-
+![Schermata 2022-08-07 alle 18 56 57](https://user-images.githubusercontent.com/91205851/183306990-902048bf-aa8e-446f-9d6c-b07529174e26.png)
 
 
+Nell esempio precedente in foto viene inserito un codice fiscale femminile con data di nascita errata (73 = 33).
 
+
+![Schermata 2022-08-07 alle 20 57 14](https://user-images.githubusercontent.com/91205851/183307028-9ccf18c6-5215-4f63-8cfd-c8c59b4c8f17.png)
+
+Come si nota dall esempio se la data di nascita e errata verra riavviato il programma entro 2 secondi
