@@ -47,7 +47,7 @@ using namespace std;
  * ERROR 001 -> STRINGA VUOTA
  * ERROR 002 -> SESSO NON VALIDO
  * ERROR 003 -> DATA DI NASCITA NON VALIDA
- * MacOS -> segmentation fault error compiler
+ * CODICE COMUNE NON TROVATO -> MacOS -> segmentation fault error compiler
  */
 
 /*================================ INZIO PROTOTIPI ==============================*/
@@ -182,7 +182,7 @@ void dati(string &dato, string out)
     fflush(stdin);
     getline(cin, dato);
 }
-/*==================  =================*/
+/*================== DIVISION =================*/
 
 int annoCorrente()
 {
