@@ -2,7 +2,7 @@
 Calcolo del codice fiscale in c++
 
 Scaricare tutta la directory contente il file sorgente .cpp e cartella "src" con il "DB" dei comuni italiani.
-Nella cartella app ci sn gli exe dell app [Ricorda di tenerli assieme alla cartella src]
+Per utenti Windows si posso utilizzare i file exe
 
 Happy Code!!
 Francesco Pio Nocerino
