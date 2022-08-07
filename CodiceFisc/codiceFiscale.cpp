@@ -757,6 +757,7 @@ void cntrl_dataNascita(string &dataNascita)
             cout << "Inserisci Data di Nascita > ";
             fflush(stdin);
             getline(cin, dataNascita);
+            cntrl_dati(dataNascita, "Inserisci Data di Nascita > ");
         }
     } while (!t1); //Controllo se e' stata inserita la data completa
 
@@ -791,10 +792,10 @@ void cntrl_dataNascita(string &dataNascita)
 #elif defined __APPLE__
             cout << color(RED, BOLD, "[ERROR 003] Data di nascita non valida\n");
 #endif
-            cout << "Inserisci data di nascita > ";
+            cout << "Inserisci Data di Nascita > ";
             fflush(stdin);
             getline(cin, dataNascita);
-
+            cntrl_dati(dataNascita, "Inserisci Data di Nascita > ");
             annoIns = dataNascita.substr(6, 4);
             meseIns = dataNascita.substr(3, 2);
             giornoIns = dataNascita.substr(0, 2);
