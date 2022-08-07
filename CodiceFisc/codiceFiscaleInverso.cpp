@@ -135,7 +135,7 @@ int main()
     string comuneNascita, sessoC, dataNascita, codice2;
     comuneNascita = ricerca_comune("./src/DB_comuni_IT.txt", codiceCatastale);
     sessoC = estr_sesso(giornoNascita);
-    // cntrl_giornoNascita(giornoNascita, sessoC);
+
     aggiungi_anno(annoNascita, sessoC);
     codice2 = codice.substr(0, 15);
     char_cntrl2 = cntrl_char(codice2);
