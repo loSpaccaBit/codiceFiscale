@@ -310,19 +310,19 @@ char carattere_cntrl(string codice)
 
     for (int i = 0; i < codice.size(); i += 2)
     {
-        tot += carattere_dispari(codice[i]);
+        tot += carattere_dispari(codice[i]); // Caratteri in posizione dispari
     }
 
     for (int i = 1; i < codice.size(); i += 2)
     {
-        tot += carattere_pari(codice[i]);
+        tot += carattere_pari(codice[i]); // Caratteri in posizione pari
     }
 
-    r = tot % 26;
+    r = tot % 26; // Calcolo del resto
 
     switch (r)
     {
-        //prendiamo un carattere
+        // In base al resto calcolato verra restituito il carattere di controllo
     case 0:
         l = 'A';
         break;
