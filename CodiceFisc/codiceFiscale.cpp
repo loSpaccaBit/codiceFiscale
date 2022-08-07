@@ -117,7 +117,7 @@ int main()
 {
 
 #ifdef _WIN32 // Ridimensionamento console
-    size_shell(800, 600);
+    size_shell(1000, 600);
 #elif __APPLE__
     size_shell_MacOS("107", "28");
 #endif
@@ -141,8 +141,9 @@ int main()
     //* Sesso
     cout << "Inserisci Sesso > ";
     cin >> sesso;
-    cntrl_sesso(sesso);
     upper_Char(sesso);
+    cntrl_sesso(sesso);
+
     cout << "----------------------------------\n";
 
     //* Data di Nascita
