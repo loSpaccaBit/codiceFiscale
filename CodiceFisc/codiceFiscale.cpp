@@ -67,11 +67,11 @@ int annoCorrente(); // Restituisce l'anno corrente
 void slp(int d);
 void upper(string &str);                            // Trasforma in Maiuscolo la stringa
 void upper_Char(char &c);                           // Trasforma in Maiuscolo il carattere
-string codiceComune(string nome_file, string &key); //Codice catastale del luogo di nascita
-char lettera_mese(string data);                     //Dato il mese di nascita viene restituita la lettere corrispondente al mese
-char carattere_cntrl(string codice);                //Carattere di controllo
-int carattere_pari(char t);
-int carattere_dispari(char t);
+string codiceComune(string nome_file, string &key); // Codice catastale del luogo di nascita
+char lettera_mese(string data);                     // Dato il mese di nascita viene restituita la lettere corrispondente al mese
+char carattere_cntrl(string codice);                // Carattere di controllo
+int carattere_pari(char t);                         // Valori caratteri in posizione pari
+int carattere_dispari(char t);                      // Valori caratteri in posizione disapri
 
 /*================== CONTROLLI INPUT =================*/
 
@@ -707,7 +707,15 @@ void cntrl_dati(string &input, string out)
 
 void cntrl_nCaratteri(int nMax, string &input, string out)
 {
-    int lunghezza = input.size();
+    /**========================================================================
+     **                           cntrl_nCaratteri
+     *?  Dati il numero minimo di caratteri controlla se una stringa rispetta il numero minimo
+     *@param nMax int  
+     *@param &input, out string  
+     *@return void
+     *========================================================================**/
+
+    int lunghezza = input.size(); // lughezza stringa
     while (lunghezza < nMax)
     {
 #ifdef _WIN32
@@ -727,7 +735,7 @@ void cntrl_nCaratteri(int nMax, string &input, string out)
         cout << out;
         fflush(stdin);
         getline(cin, input);
-        cntrl_dati(input, out);
+        cntrl_dati(input, out); // controlla se c'e' stato un input
         lunghezza = input.size();
     }
 }
