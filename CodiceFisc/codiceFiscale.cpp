@@ -156,7 +156,7 @@ int main()
 //* Data di Nascita
 #ifdef _WIN32
     set_console_color(YELLOW);
-            cout
+    cout
         << bold_on
         << "Suggerimento inserire data di nascita nel formato gg-mm-aaaa\n"
         << bold_off;
@@ -172,7 +172,7 @@ int main()
 //* Luogo Nascita
 #ifdef _WIN32
     set_console_color(YELLOW);
-            cout
+    cout
         << bold_on
         << "Suggerimento inserire luogo nascita nel formato Comune (prv)\n"
         << bold_off;
@@ -239,7 +239,7 @@ void slp(int d)
     /**----------------------
      **   slp
      *? Funzione sleep
-     *@param d int
+     *@param d int  
      *@return void
      *------------------------**/
 
@@ -339,7 +339,7 @@ char carattere_cntrl(string codice)
     /**----------------------------------------------
      **              carattere_cntrl
      *?  Calcolo del carattere di controllo
-     *@param codice string
+     *@param codice string  
      *@return char
      *---------------------------------------------**/
 
@@ -448,7 +448,7 @@ int carattere_pari(char t)
     /**----------------------------------------------
      **              carattere_pari
      *?  Valori caratteri in posizione pari
-     *@param t char
+     *@param t char  
      *@return int
      *---------------------------------------------**/
 
@@ -573,7 +573,7 @@ int carattere_dispari(char t)
     /**----------------------------------------------
      **              carattere_dispari
      *?  Valori caratteri in posizione dispari
-     *@param t char
+     *@param t char  
      *@return int
      *---------------------------------------------**/
     int conta = 0;
@@ -698,7 +698,7 @@ void cntrl_dati(string &input, string out)
     /**========================================================================
      **                           cntrl_dati
      *?  Controlla se e' stato immesso un input
-     *@param &input, out string
+     *@param &input, out string    
      *@return void
      *========================================================================**/
 
@@ -730,8 +730,8 @@ void cntrl_nCaratteri(int nMax, string &input, string out)
     /**========================================================================
      **                           cntrl_nCaratteri
      *?  Dati il numero minimo di caratteri controlla se una stringa rispetta il numero minimo
-     *@param nMax int
-     *@param &input, out string
+     *@param nMax int  
+     *@param &input, out string  
      *@return void
      *========================================================================**/
 
@@ -1258,7 +1258,7 @@ void loading()
     /**----------------------------------------------
      **              loading
      *?  Schermata di carcamento (solo x uso grafico)
-     *@param void
+     *@param void  
      *@return void
      *---------------------------------------------**/
 
