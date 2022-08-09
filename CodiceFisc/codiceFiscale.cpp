@@ -153,13 +153,33 @@ int main()
 
     cout << "----------------------------------\n";
 
-    //* Data di Nascita
+//* Data di Nascita
+#ifdef _WIN32
+    set_console_color(YELLOW);
+            cout
+        << bold_on
+        << "Suggerimento inserire data di nascita nel formato gg-mm-aaaa\n"
+        << bold_off;
+    set_console_color(WHITE_OFF);
+#elif defined __APPLE__
+    cout << color(YELLOW, BOLD, "Suggerimento inserire data di nascita nel formato gg-mm-aaaa\n");
+#endif
     dati(dataNascita, "Inserisci Data di Nascita > ");
     cntrl_dati(dataNascita, "Inserisci Data di Nascita > ");
     cntrl_dataNascita(dataNascita); //? Controllo validita data
     cout << "----------------------------------\n";
 
-    //* Luogo Nascita
+//* Luogo Nascita
+#ifdef _WIN32
+    set_console_color(YELLOW);
+            cout
+        << bold_on
+        << "Suggerimento inserire luogo nascita nel formato Comune (prv)\n"
+        << bold_off;
+    set_console_color(WHITE_OFF);
+#elif defined __APPLE__
+    cout << color(YELLOW, BOLD, "Suggerimento inserire luogo nascita nel formato Comune (prv)\n");
+#endif
     dati(luogoNascita, "Inserisci Luogo di Nascita > ");
     cntrl_dati(luogoNascita, "Inserisci Luogo di Nascita > ");
     cntrl_nCaratteri(NCHAR_MIN, luogoNascita, "Inserisci Luogo Nascita > ");
@@ -219,7 +239,7 @@ void slp(int d)
     /**----------------------
      **   slp
      *? Funzione sleep
-     *@param d int  
+     *@param d int
      *@return void
      *------------------------**/
 
@@ -319,7 +339,7 @@ char carattere_cntrl(string codice)
     /**----------------------------------------------
      **              carattere_cntrl
      *?  Calcolo del carattere di controllo
-     *@param codice string  
+     *@param codice string
      *@return char
      *---------------------------------------------**/
 
@@ -428,7 +448,7 @@ int carattere_pari(char t)
     /**----------------------------------------------
      **              carattere_pari
      *?  Valori caratteri in posizione pari
-     *@param t char  
+     *@param t char
      *@return int
      *---------------------------------------------**/
 
@@ -553,7 +573,7 @@ int carattere_dispari(char t)
     /**----------------------------------------------
      **              carattere_dispari
      *?  Valori caratteri in posizione dispari
-     *@param t char  
+     *@param t char
      *@return int
      *---------------------------------------------**/
     int conta = 0;
@@ -678,7 +698,7 @@ void cntrl_dati(string &input, string out)
     /**========================================================================
      **                           cntrl_dati
      *?  Controlla se e' stato immesso un input
-     *@param &input, out string    
+     *@param &input, out string
      *@return void
      *========================================================================**/
 
@@ -688,10 +708,10 @@ void cntrl_dati(string &input, string out)
         if (input.empty()) //empty e' una funzione della lib string e controlla se la stringa e vuota
         {
 #ifdef _WIN32
-            set_console_color(12);
+            set_console_color(RED);
             cout << bold_on << "[ERROR 001] Non e' stato rilevato alcun input!\n"
                  << bold_off;
-            set_console_color(7);
+            set_console_color(WHITE_OFF);
 #elif defined __APPLE__
             cout << color(RED, BOLD, "[ERROR 001] Non e' stato rilevato alcun input!\n");
 #endif
@@ -710,8 +730,8 @@ void cntrl_nCaratteri(int nMax, string &input, string out)
     /**========================================================================
      **                           cntrl_nCaratteri
      *?  Dati il numero minimo di caratteri controlla se una stringa rispetta il numero minimo
-     *@param nMax int  
-     *@param &input, out string  
+     *@param nMax int
+     *@param &input, out string
      *@return void
      *========================================================================**/
 
@@ -719,14 +739,14 @@ void cntrl_nCaratteri(int nMax, string &input, string out)
     while (lunghezza < nMax)
     {
 #ifdef _WIN32
-        set_console_color(12);
+        set_console_color(RED);
         cout << bold_on << "[ERROR 004] Il valore inserito non e' valido inserire alemo " << bold_off;
-        set_console_color(10);
+        set_console_color(GREEN);
         cout << bold_on << nMax << bold_off;
-        set_console_color(12);
+        set_console_color(RED);
         cout << bold_on << " caratteri!!\n"
              << bold_off;
-        set_console_color(7);
+        set_console_color(WHITE_OFF);
 #elif defined __APPLE__
         cout << color(RED, BOLD, "[ERROR 004] Il valore inserito non e' valido inserire alemo ")
              << color(GREEN, BOLD, nMax)
@@ -757,10 +777,10 @@ void cntrl_sesso(char &sesso)
         if (!t)
         {
 #ifdef _WIN32
-            set_console_color(12);
+            set_console_color(RED);
             cout << bold_on << "[ERROR 002] Il sesso inserito non e' valido!!\n"
                  << bold_off;
-            set_console_color(7);
+            set_console_color(WHITE_OFF);
 #elif defined __APPLE__
             cout << color(RED, BOLD, "[ERROR 002] Il sesso inserito non e' valido!!\n");
 #endif
@@ -789,12 +809,18 @@ void cntrl_dataNascita(string &dataNascita)
         if (!t1)
         {
 #ifdef _WIN32
-            set_console_color(12);
-            cout << bold_on << "[ERROR 003] Data di Nascita non valida!!\n"
+            set_console_color(RED);
+            cout << bold_on
+                 << "[ERROR 003] Data di Nascita non valida!!\n"
                  << bold_off;
-            set_console_color(7);
+            set_console_color(YELLOW);
+            cout << bold_on
+                 << "Suggerimento inserire data nel formato gg-mm-aaaa\n"
+                 << bold_off;
+            set_console_color(WHITE_OFF);
 #elif defined __APPLE__
             cout << color(RED, BOLD, "[ERROR 003] Data di Nascita non valida!!\n");
+            cout << color(YELLOW, BOLD, "Suggerimento inserire data nel formato gg-mm-aaaa\n");
 #endif
             cout << "Inserisci Data di Nascita > ";
             fflush(stdin);
@@ -827,12 +853,18 @@ void cntrl_dataNascita(string &dataNascita)
         if (!t)
         {
 #ifdef _WIN32
-            set_console_color(12);
+            set_console_color(RED);
             cout << bold_on << "[ERROR 003] Data di Nascita non valida\n"
                  << bold_off;
-            set_console_color(7);
+            set_console_color(YELLOW);
+            cout << bold_on
+                 << "Suggerimento inserire data nel formato gg-mm-aaaa\n"
+                 << bold_off;
+            set_console_color(WHITE_OFF);
 #elif defined __APPLE__
             cout << color(RED, BOLD, "[ERROR 003] Data di nascita non valida\n");
+            cout << color(YELLOW, BOLD, "Suggerimento inserire data nel formato gg-mm-aaaa\n");
+
 #endif
             cout << "Inserisci Data di Nascita > ";
             fflush(stdin);
@@ -1132,10 +1164,10 @@ void card(string codice, string nome, string cognome, string lugoNascita, string
     cout << "==== \\____\\___/ \\__,_|_|\\___\\___| |_|   |_|___/\\___\\__,_|_|\\___| ====\n ";
     cout << " ==================================================================== \n";
     cout << "|                                                                    |\n";
-    set_console_color(10);
+    set_console_color(GREEN);
     cout << "| \t\t\t" << bold_on << codice << bold_off << endl;
     cout << "| ------------------------------------------------------------------ |\n";
-    set_console_color(15);
+    set_console_color(WHITE);
     cout << ".                                                                    .\n";
     cout << "| ------------------------------------------------------------------|\n";
     cout << "| COGNOME: " << bold_on << cognome << bold_off << endl;
@@ -1151,7 +1183,7 @@ void card(string codice, string nome, string cognome, string lugoNascita, string
     cout << "| \n";
     cout << ".                                                                    .\n";
     cout << " =====================================================================\n";
-    cout<<"Premere un tasto per terminare...\n";
+    cout << "Preme un tasto per terminare...\n";
     cin.get();
 #elif defined __APPLE__ //MacOs code
 
@@ -1197,18 +1229,18 @@ void banner()
      *------------------------------------------------------------------------**/
 
 #ifdef _WIN32 //*Windows code
-    set_console_color(10);
+    set_console_color(GREEN);
     cout << "   ____          _ _          _____ _               _\n";
     cout << "  / ___|___   __| (_) ___ ___|  ___(_)___  ___ __ _| | ___\n";
-    set_console_color(15);
+    set_console_color(WHITE_OFF);
     cout << " | |   / _ \\ / _` | |/ __/ _ \\ |_  | / __|/ __/ _` | |/ _ \\ \n";
     cout << " | |__| (_) | (_| | | (_|  __/  _| | \\__ \\ (_| (_| | |  __/ \n";
-    set_console_color(12);
+    set_console_color(RED);
     cout << "  \\____\\___/ \\__,_|_|\\___\\___|_|   |_|___/\\___\\__,_|_|\\___| \n";
-    set_console_color(14);
+    set_console_color(YELLOW);
     cout << endl;
     cout << "\t\t\tBy: Francesco Pio Nocerino\n\n";
-    set_console_color(7);
+    set_console_color(WHITE_OFF);
 
 #elif defined __APPLE__ //*MacOs code
     cout << color(GREEN, "", "  ____          _ _          _____ _               _\n");
@@ -1226,7 +1258,7 @@ void loading()
     /**----------------------------------------------
      **              loading
      *?  Schermata di carcamento (solo x uso grafico)
-     *@param void  
+     *@param void
      *@return void
      *---------------------------------------------**/
 
