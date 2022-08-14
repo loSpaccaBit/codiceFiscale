@@ -54,6 +54,7 @@ using namespace std;
  * ERROR 003 -> CARATTERE DI CONTROLLO ERRATO
  * ERROR 004 ->  DATA DI NASCITA FEMMINILE INVALIDA
  * CODICE COMUNE NON TROVATO -> MacOS -> segmentation fault error compiler
+ * SI PUO CAMBIRARE NOME AL CODICESORGENTE E RICOMPILARLO MA NON L'ESEGUIBILE, NEL CASO AVRA PROBLEMI CON IL RIAVVIO IN CASO ERRATO DI DATA
  */
 
 /*================================ INZIO PROTOTIPI ==============================*/
@@ -79,6 +80,7 @@ string anno_corrente();
 void aggiungi_anno(string &annoNascita, string sesso); // elimina
 int carattere_pari(char t);                            // Valori caratteri in posizone pari
 int carattere_dispari(char t);                         // Valori caratteri in posizione dispari
+string nome_file();                                    // Nome file corrente
 
 /*================== GRAFICA =================*/
 
@@ -135,7 +137,7 @@ int main()
     string comuneNascita, sessoC, dataNascita, codice2;
     comuneNascita = ricerca_comune("./src/DB_comuni_IT.txt", codiceCatastale);
     sessoC = estr_sesso(giornoNascita);
-
+    // cntrl_giornoNascita(giornoNascita, sessoC);
     aggiungi_anno(annoNascita, sessoC);
     codice2 = codice.substr(0, 15);
     char_cntrl2 = cntrl_char(codice2);
@@ -387,6 +389,15 @@ char cntrl_char(string codice)
 
 void cntrl_giornoNascita(string &giornoNascita, string &dataNascita, string &meseNascita, string &annoNascita, string sesso)
 {
+#ifdef _WIN32 //* Composizione nome file exe (WIN)
+    string nome = nome_file() + ".exe";
+#elif defined __APPLE__ //* Composizione nome file exe (MacOS)
+    string nome = "./" + nome_file();
+#endif
+    int n = nome.size();
+    char name_exe[n + 1];
+    strcpy(name_exe, nome.c_str());
+
     int giorno = stoi(giornoNascita);
     const int time = 2;
     if (sesso == "DONNA")
@@ -410,9 +421,9 @@ void cntrl_giornoNascita(string &giornoNascita, string &dataNascita, string &mes
             cout << "Il programma verra' riavviato in " << time << " s\n";
             slp(time);
 #ifdef _WIN32
-            system("codiceFiscaleInverso.exe");
+            system(name_exe);
 #elif defined __APPLE__
-            system("./codiceFiscaleInverso"); //! Riavvia il programma nel caso si cambi nome al file cambiare anche qui il nome dell eseguibile
+            system(name_exe); //! Riavvia il programma
 #endif
         }
     }
@@ -431,9 +442,9 @@ void cntrl_giornoNascita(string &giornoNascita, string &dataNascita, string &mes
             cout << "Il programma verra' riavviato in " << time << " s\n";
             slp(time);
 #ifdef _WIN32
-            system("codiceFiscaleInverso.exe");
+            system(name_exe);
 #elif defined __APPLE__
-            system("./codiceFiscaleInverso"); //! Riavvia il programma nel caso si cambi nome al file cambiare anche qui il nome dell eseguibile
+            system(name_exe); //! Riavvia il programma
 #endif
         }
     }
@@ -809,6 +820,26 @@ int carattere_dispari(char t)
     return conta;
 }
 
+string nome_file()
+{
+    /**----------------------
+     **   nome_file
+     *@param void void
+     *@return void
+     *? Nome file corrente  p
+     *------------------------**/
+    string name_file = __FILE__;
+    string name;
+    int i;
+    for (i = 0; i < name_file.size(); i++)
+    {
+        if (name_file[i] == '.')
+            break;
+    }
+    name = name_file.substr(0, i);
+    return name;
+}
+
 /*================== GRAFICA =================*/
 
 void cl()
@@ -974,6 +1005,8 @@ void card(string codice, string codice2, string cognome, string nome, string ses
         set_console_color(11);
         cout << codice2 << setw(20) << "|" << endl;
         set_console_color(7);
+        cout << "Preme un tasto per terminare...\n";
+        cin.get();
     }
     else
     {
@@ -998,8 +1031,6 @@ void card(string codice, string codice2, string cognome, string nome, string ses
     cout << "| \n";
     cout << ".                                                                    .\n";
     cout << " =====================================================================\n";
-    cout<<"Premere un tasto per terminare...\n";
-    cin.get();
 #elif defined __APPLE__ // MacOs code
 
     cout << color(RED, BOLD, "NB: E' POSSIBBILE CHE DUE PERSONE ABBIANO LO STESSO CODICE FISCALE IN QUESTO CASO L'AGENZIA DELLE ENTRATE PROVVEDE A SOSTITUIRE ALCUNI CARATTERI\n");
