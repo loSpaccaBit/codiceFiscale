@@ -21,7 +21,8 @@ void cntrl_dati(string &input, string out); //Controlo inserimento stringa
 void cntrl_nCaratteri(int nMax, string &input, string out);
 void cntrl_sesso(char &sesso);               // Controllo inserimento sesso
 void cntrl_dataNascita(string &dataNascita); // Controllo inserimento data di nascita
-
+string nome_file(string name_file);
+void restart_programm(string name_file);
 /*================================ DIVISION ==============================*/
 
 void cntrl_dati(string &input, string out)
@@ -211,6 +212,39 @@ void cntrl_dataNascita(string &dataNascita)
             giornoI = stoi(giornoIns);
         }
     } while (!t);
+}
+
+string nome_file(string name_file)
+{
+    /**----------------------
+     **   nome_file
+     *@param void void
+     *@return void
+     *? Nome file corrente  
+     *------------------------**/
+    string name;
+    int i;
+    for (i = 0; i < name_file.size(); i++)
+    {
+        if (name_file[i] == '.')
+            break;
+    }
+    name = name_file.substr(0, i);
+    return name;
+}
+
+void restart_programm(string name_file)
+{
+#ifdef _WIN32 //* Composizione nome file exe (WIN)
+    string nome = nome_file(name_file) + ".exe";
+#elif defined __APPLE__ //* Composizione nome file exe (MacOS)
+    string nome = "./" + nome_file(name_file);
+#endif
+    int n = nome.size();
+    char *name_exe;
+    name_exe = (char *)malloc(n * sizeof(int));
+    strcpy(name_exe, nome.c_str());
+    system(name_exe);
 }
 
 #endif /* DDA67E68_37A4_4BD5_8854_D2FD0ED60747 */
