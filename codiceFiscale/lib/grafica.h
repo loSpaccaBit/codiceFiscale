@@ -248,8 +248,6 @@ void card(string codice, string nome, string cognome, string lugoNascita, string
     cout << "| \n";
     cout << ".                                                                    .\n";
     cout << " =====================================================================\n";
-    cout << "Preme un tasto per terminare...\n";
-    cin.get();
 #elif defined __APPLE__ || defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__) //MacOs code
 
     cout << color(RED, BOLD, "NB: E' POSSIBBILE CHE DUE PERSONE ABBIANO LO STESSO CODICE FISCALE IN QUESTO CASO L'AGENZIA DELLE ENTRATE PROVVEDE A SOSTITUIRE ALCUNI CARATTERI\n");
