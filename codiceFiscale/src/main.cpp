@@ -96,5 +96,29 @@ int main()
 
 	card(codice_calcolato, nome, cognome, luogoNascita, dataNascita, sesso);
 
+	char s;
+#ifdef _WIN32
+	set_console_color(12);
+	cout << "\n[ R ] -> Calcola un nuovo Codice\n";
+	set_console_color(10);
+	cout << "[ Enter ] -> Termina Programma\n";
+	set_console_color(7);
+#elif __APPLE__ || defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+	cout << color(RED, BOLD, "\n[ R ] -> Calcola un nuovo Codice\n");
+	cout << color(GREEN, BOLD, "[ Enter ] -> Termina Programma\n");
+#endif
+	cin.get(s);
+	upper_Char(s);
+	switch (s)
+	{
+	case 'R':
+		restart_programm(__FILE__);
+		slp(2);
+		break;
+
+	default:
+		break;
+	}
+
 	return 0;
 }
