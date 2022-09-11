@@ -231,7 +231,10 @@ void card(string codice, string nome, string cognome, string lugoNascita, string
     cout << "| \n";
     cout << ".                                                                    .\n";
     cout << " =====================================================================\n";
-    cout << color(GRREN,BOLD,">") << "Preme un tasto per terminare...\n";
+    set_color_console(GREEN);
+    cout << bold_on << ">" << bold_off;
+    set_color_console(WHITE_OFF);
+    cout << " Preme un tasto per terminare...\n";
     cin.get();
 #elif defined(__APPLE__) || defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
 
